@@ -182,6 +182,10 @@ public partial class Game1
     {
         rlImGui.Setup(true);
 
+        // ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
+        // ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
+        // ImGui.DockSpace(ImGui.GetID("MyDockspace"));
+
         _showConfigurationWindow = false;
         _showReadMeWindow = false;
         _showStructureWindow = false;

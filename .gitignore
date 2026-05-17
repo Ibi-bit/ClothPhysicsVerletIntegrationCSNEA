@@ -1,18 +1,25 @@
-bin/
-obj/
+# Ignore build outputs
+**/bin/
+**/obj/
+
+# User and IDE files
 *.user
 *.suo
-
-.vs
-.vscode/ 
+.vs/
+.vscode/
 .DS_Store
 global.json
 
+# Publish/output folders
+**/publish/
+publish/
+
+# Project-specific
 PhysicsCSAlevlProject/imgui.ini
 /PhysicsCSAlevlProject/.idea/
 /PhysicsCSAlevlProject/plan-featureRoadmap.prompt.md
 PhysicsCSAlevlProject/logs.log
-.gitignore
-.gitignore
+
+# Docs / generated files
 html/
 latex/
