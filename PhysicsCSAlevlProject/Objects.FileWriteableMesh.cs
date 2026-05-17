@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+using System.Numerics;
+using ImGuiNET;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Raylib_cs;
+using rlImGui_cs;
 
 namespace PhysicsCSAlevlProject;
 
@@ -10,7 +15,7 @@ namespace PhysicsCSAlevlProject;
 class FileWriteableMesh
 {
     /// <summary>
-    ///stores the data for a oscilating particle in a way that can be easily serialized to json,
+    /// stores the data for a oscilating particle in a way that can be easily serialized to json,
     /// no anchor position as that is stored as the main position of the particle, but includes the amplitude, frequency and angle of the oscilation
     /// </summary>
     public class OscillationData
@@ -42,9 +47,8 @@ class FileWriteableMesh
         public float NaturalLength;
     }
 
-    public List<particleData> Particles = new List<particleData>();
-
-    public List<stickData> Sticks = new List<stickData>();
+    public List<particleData> Particles = new();
+    public List<stickData> Sticks = new();
     public List<Collider> Colliders = new();
 
     public float SpringConstant = 10000f;
@@ -87,6 +91,7 @@ class FileWriteableMesh
                 );
                 continue;
             }
+
             Particles.Add(
                 new particleData
                 {
@@ -97,6 +102,7 @@ class FileWriteableMesh
                 }
             );
         }
+
         foreach (var kvp in mesh.Sticks)
         {
             var s = kvp.Value;
@@ -109,6 +115,7 @@ class FileWriteableMesh
                 }
             );
         }
+
         foreach (var c in mesh.Colliders)
         {
             Colliders.Add(c.DeepCopy());
@@ -117,13 +124,14 @@ class FileWriteableMesh
 
     public Mesh ToMesh()
     {
-        var mesh = new Mesh();
-
-        mesh.springConstant = SpringConstant;
-        mesh.drag = Drag;
-        mesh.mass = Mass;
-        mesh.collisionFrictionCoefficient = CollisionFrictionCoefficient;
-        mesh.collisionBounceCoefficient = CollisionBounceCoefficient;
+        var mesh = new Mesh
+        {
+            springConstant = SpringConstant,
+            drag = Drag,
+            mass = Mass,
+            collisionFrictionCoefficient = CollisionFrictionCoefficient,
+            collisionBounceCoefficient = CollisionBounceCoefficient,
+        };
 
         var indexToParticleId = new Dictionary<int, int>();
 
@@ -143,17 +151,6 @@ class FileWriteableMesh
 
                 if (hasExplicitOscillation)
                 {
-                    float amplitude = 20f;
-                    float frequency = 1f;
-                    float angle = 0f;
-
-                    if (hasExplicitOscillation)
-                    {
-                        amplitude = pData.Oscillation.Amplitude;
-                        frequency = pData.Oscillation.Frequency;
-                        angle = pData.Oscillation.Angle;
-                    }
-
                     int particleId = mesh.AddParticle(
                         pData.Position,
                         pData.Mass,
@@ -165,17 +162,17 @@ class FileWriteableMesh
                             pData.Mass,
                             pData.IsPinned,
                             Color.White,
-                            amplitude,
-                            frequency,
-                            angle
+                            pData.Oscillation.Amplitude,
+                            pData.Oscillation.Frequency,
+                            pData.Oscillation.Angle
                         )
                     );
                     indexToParticleId[i] = particleId;
                     continue;
                 }
 
-                int Id = mesh.AddParticle(pData.Position, pData.Mass, pData.IsPinned, Color.White);
-                indexToParticleId[i] = Id;
+                int particleIndex = mesh.AddParticle(pData.Position, pData.Mass, pData.IsPinned, Color.White);
+                indexToParticleId[i] = particleIndex;
             }
         }
 
@@ -192,6 +189,7 @@ class FileWriteableMesh
                 }
             }
         }
+
         if (Colliders != null)
         {
             foreach (var c in Colliders)

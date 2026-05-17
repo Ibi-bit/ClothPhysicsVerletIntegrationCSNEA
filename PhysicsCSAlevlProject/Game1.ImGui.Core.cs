@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ImGuiNET;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using Raylib_cs;
+using rlImGui_cs;
+using VectorGraphics;
+using System.Numerics;
 
 namespace PhysicsCSAlevlProject;
 
@@ -178,6 +180,8 @@ public partial class Game1
     /// </summary>
     private void InitializeImGui()
     {
+        rlImGui.Setup(true);
+
         _showConfigurationWindow = false;
         _showReadMeWindow = false;
         _showStructureWindow = false;
@@ -192,8 +196,8 @@ public partial class Game1
         _logger = new ImGuiLogger();
         _database = new Game1Database(ref _logger);
 
-        _logger.RegisterEnvVar("mouseX", () => _prevMouseState.X.ToString());
-        _logger.RegisterEnvVar("mouseY", () => _prevMouseState.Y.ToString());
+        _logger.RegisterEnvVar("mouseX", () => Raylib.GetMousePosition().X.ToString());
+        _logger.RegisterEnvVar("mouseY", () => Raylib.GetMousePosition().Y.ToString());
         _logger.RegisterEnvVar("windowW", () => _windowBounds.Width.ToString());
         _logger.RegisterEnvVar("windowH", () => _windowBounds.Height.ToString());
         _meshName = "MyMesh";
@@ -260,7 +264,7 @@ public partial class Game1
     /// <param name="gameTime"></param>
     private void ImGuiDraw(GameTime gameTime)
     {
-        _guiRenderer.BeginLayout(gameTime);
+        rlImGui.Begin();
         _ctrlHeld = ImGui.GetIO().KeyCtrl;
         _shiftHeld = ImGui.GetIO().KeyShift;
         _altHeld = ImGui.GetIO().KeyAlt;
@@ -313,7 +317,8 @@ public partial class Game1
         ModeSwitchingImGui();
         ToolSwitchingImGui();
 
-        _guiRenderer.EndLayout();
+        rlImGui.End();
+
     }
 
     /// <summary>

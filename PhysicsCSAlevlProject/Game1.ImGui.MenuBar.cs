@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ImGuiNET;
-using Microsoft.Xna.Framework;
+using Raylib_cs;
+using rlImGui_cs;
+using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
 
@@ -47,7 +49,7 @@ public partial class Game1
 
             if (ImGui.MenuItem("Exit"))
             {
-                Exit();
+                Raylib.CloseWindow();
             }
             ImGui.EndMenu();
         }
@@ -202,7 +204,7 @@ public partial class Game1
     {
         foreach (var factory in _factories)
         {
-            if (ImGui.Selectable(factory.Name, false, ImGuiSelectableFlags.DontClosePopups))
+            if (ImGui.Selectable(factory.Name, false))
             {
                 _selectedFactoryAction = factory;
             }

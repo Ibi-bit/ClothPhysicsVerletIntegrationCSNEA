@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Emit;
 using System.Xml;
 using ImGuiNET;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using Raylib_cs;
 using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
@@ -93,7 +93,6 @@ public partial class Game1
             { "LineCut", new Tool("LineCut", null, false) },
             { "Select Particles", new Tool("Select Particles", null, false) },
             { "Cursor Collider", new Tool("Cursor Collider", null, false) },
-            {"Draw Hull Polygon", new Tool("Draw Hull Polygon", null, false) },
         };
         foreach (var tool in _interactTools.Values)
         {
@@ -211,7 +210,7 @@ public partial class Game1
                 );
             }
 
-            if (ImGui.Selectable(toolName, isSelected, ImGuiSelectableFlags.DontClosePopups))
+            if (ImGui.Selectable(toolName, isSelected))
             {
                 if (!string.Equals(_selectedToolName, toolName, StringComparison.Ordinal))
                 {
@@ -759,9 +758,9 @@ public partial class Game1
     /// <param name="mouseState"></param>
     /// <param name="isDragging"></param>
     /// <param name="particleIds"></param>
-    private void DragMeshParticles(MouseState mouseState, bool isDragging, List<int> particleIds)
+    private void DragMeshParticles(bool isDragging, List<int> particleIds)
     {
-        Vector2 mousePos = new Vector2(mouseState.X, mouseState.Y);
+        Vector2 mousePos = Raylib.GetMousePosition();
 
         if (isDragging && _currentMode != MeshMode.Edit)
         {
@@ -811,7 +810,7 @@ public partial class Game1
                 _logger.AddLog(
                     $"Particle ID {kvp.Key} - Pos: {particle.Position}, Pinned: {particle.IsPinned}"
                 );
-                particle.Color = Color.Cyan;
+                particle.Color = new Color(0, 255, 255, 255); // Cyan
             }
             _activeMesh.Particles[kvp.Key] = particle;
         }
@@ -834,7 +833,7 @@ public partial class Game1
 
             if (distance <= radius)
             {
-                particle.Color = Color.Cyan;
+                particle.Color = new Color(0, 255, 255, 255); // Cyan
                 _inspectedParticles.Add(kvp.Key);
             }
             _activeMesh.Particles[kvp.Key] = particle;
@@ -864,7 +863,7 @@ public partial class Game1
             if (!_activeMesh.Particles.TryGetValue(id, out var particle))
                 continue;
 
-            particle.Color = Color.Cyan;
+            particle.Color = new Color(0, 255, 255, 255); // Cyan
             _activeMesh.Particles[id] = particle;
 
             if (!_inspectedParticles.Contains(id))
@@ -891,7 +890,7 @@ public partial class Game1
         foreach (var kvp in _activeMesh.Particles)
         {
             var particle = kvp.Value;
-            if (rect.Contains(particle.Position.ToPoint()))
+            if (Collider.IsPointInside(rect, particle.Position))
             {
                 result.Add(kvp.Key);
             }

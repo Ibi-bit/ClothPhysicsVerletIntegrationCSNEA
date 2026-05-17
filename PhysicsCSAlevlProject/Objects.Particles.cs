@@ -1,6 +1,9 @@
 using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
@@ -129,17 +132,17 @@ class DrawableParticle : Particle
         rectangle = new PrimitiveBatch.Rectangle(Position, Size, Color);
     }
 
-    public void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch)
+    public void Draw()
     {
         Vector2 middle = Position - Size / 2;
         if (IsPinned)
         {
-            rectangle = new PrimitiveBatch.Rectangle(middle, Size, Color.BlueViolet);
-            rectangle.Draw(spriteBatch, primitiveBatch);
+            rectangle = new PrimitiveBatch.Rectangle(middle, Size, new Color(138, 43, 226, 255));
+            rectangle.Draw();
             return;
         }
         rectangle = new PrimitiveBatch.Rectangle(middle, Size, Color);
-        rectangle.Draw(spriteBatch, primitiveBatch);
+        rectangle.Draw();
     }
 }
 

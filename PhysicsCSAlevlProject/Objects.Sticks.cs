@@ -1,5 +1,7 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
@@ -79,14 +81,12 @@ class DrawableStick : Stick
     }
 
     public void Draw(
-        SpriteBatch spriteBatch,
-        PrimitiveBatch primitiveBatch,
         float stickDrawThickness = -1
     )
     {
         float w = -1 != stickDrawThickness ? stickDrawThickness : Width;
         line = new PrimitiveBatch.Line(P1.Position, P2.Position, Color, w);
         if (!IsCut)
-            line.Draw(spriteBatch, primitiveBatch);
+            line.Draw();
     }
 }

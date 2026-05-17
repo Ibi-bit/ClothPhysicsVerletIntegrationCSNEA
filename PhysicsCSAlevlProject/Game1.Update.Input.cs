@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 
 namespace PhysicsCSAlevlProject;
 
@@ -17,14 +19,9 @@ public partial class Game1
     /// </summary>
     private Collider _draggedCollider;
 
-    private void HandleUndoRedoShortcuts(KeyboardState keyboardState, bool ctrlHeld, bool shiftHeld)
+    private void HandleUndoRedoShortcuts(bool ctrlHeld, bool shiftHeld)
     {
-        if (
-            ctrlHeld
-            && !shiftHeld
-            && keyboardState.IsKeyDown(Keys.Z)
-            && !_prevKeyboardState.IsKeyDown(Keys.Z)
-        )
+        if (ctrlHeld && !shiftHeld && Raylib.IsKeyPressed(KeyboardKey.Z))
         {
             if (_meshHistory.Count > 0)
             {
@@ -38,12 +35,7 @@ public partial class Game1
                 _logger.AddLog("No more history to undo", ImGuiLogger.LogTypes.Warning);
             }
         }
-        else if (
-            ctrlHeld
-            && shiftHeld
-            && keyboardState.IsKeyDown(Keys.Z)
-            && !_prevKeyboardState.IsKeyDown(Keys.Z)
-        )
+        else if (ctrlHeld && shiftHeld && Raylib.IsKeyPressed(KeyboardKey.Z))
         {
             if (_meshRedoHistory.Count > 0)
             {
@@ -74,9 +66,9 @@ public partial class Game1
         }
     }
 
-    private void HandlePauseAndStepHotkeys(KeyboardState keyboardState)
+    private void HandlePauseAndStepHotkeys()
     {
-        if (keyboardState.IsKeyDown(Keys.Escape) && !_prevKeyboardState.IsKeyDown(Keys.Escape))
+        if (Raylib.IsKeyPressed(KeyboardKey.Escape))
         {
             _paused = !_paused;
             MeshHistoryPush();
@@ -89,11 +81,7 @@ public partial class Game1
                 _logger.AddLog("Simulation resumed", ImGuiLogger.LogTypes.Info);
             }
         }
-        else if (
-            !_paused
-            && keyboardState.IsKeyDown(Keys.Space)
-            && !_prevKeyboardState.IsKeyDown(Keys.Space)
-        )
+        else if (!_paused && Raylib.IsKeyPressed(KeyboardKey.Space))
         {
             _paused = true;
             _paused = false;
@@ -101,15 +89,15 @@ public partial class Game1
         }
     }
 
-    private void HandleDirectToolSelection(KeyboardState keyboardState)
+    private void HandleDirectToolSelection()
     {
-        if (keyboardState.IsKeyDown(Keys.D) && !_prevKeyboardState.IsKeyDown(Keys.D))
+        if (Raylib.IsKeyPressed(KeyboardKey.D))
         {
             bool ctrlHeld =
-                keyboardState.IsKeyDown(Keys.LeftControl)
-                || keyboardState.IsKeyDown(Keys.RightControl);
+                Raylib.IsKeyDown(KeyboardKey.LeftControl)
+                || Raylib.IsKeyDown(KeyboardKey.RightControl);
             bool shiftHeld =
-                keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift);
+                Raylib.IsKeyDown(KeyboardKey.LeftShift) || Raylib.IsKeyDown(KeyboardKey.RightShift);
 
             if (!ctrlHeld && !shiftHeld && _currentToolSet.ContainsKey("Drag"))
             {
@@ -119,20 +107,24 @@ public partial class Game1
         }
     }
 
-    private Vector2 HandleMouseAndToolInput(
-        MouseState mouseState,
-        Vector2 currentMousePos,
-        bool imguiWantsMouse
-    )
+    private Vector2 HandleMouseAndToolInput(Vector2 currentMousePos, bool imguiWantsMouse)
     {
         if (!imguiWantsMouse)
         {
-            IsMouseVisible = false;
-            if (_leftPressed && _windowBounds.Contains(_initialMousePosWhenPressed) && IsActive)
+            Raylib.HideCursor();
+            if (
+                _leftPressed
+                && (_initialMousePosWhenPressed.X >= _windowBounds.X
+                    && _initialMousePosWhenPressed.X <= _windowBounds.X + _windowBounds.Width
+                    && _initialMousePosWhenPressed.Y >= _windowBounds.Y
+                    && _initialMousePosWhenPressed.Y <= _windowBounds.Y + _windowBounds.Height)
+                && Raylib.IsWindowFocused()
+            )
             {
-                var clampedPos = new Vector2(
-                    MathHelper.Clamp(currentMousePos.X, 0, _windowBounds.Width),
-                    MathHelper.Clamp(currentMousePos.Y, 0, _windowBounds.Height)
+                var clampedPos = Vector2.Clamp(
+                    currentMousePos,
+                    new Vector2(0, 0),
+                    new Vector2(_windowBounds.Width, _windowBounds.Height)
                 );
 
                 if (_selectedToolName == "Drag" && _currentMode == MeshMode.Interact)
@@ -147,10 +139,10 @@ public partial class Game1
                 }
 
                 currentMousePos = clampedPos;
-                Mouse.SetPosition((int)clampedPos.X, (int)clampedPos.Y);
+                Raylib.SetMousePosition((int)clampedPos.X, (int)clampedPos.Y);
             }
 
-            if (mouseState.LeftButton == ButtonState.Pressed && !_leftPressed)
+            if (Raylib.IsMouseButtonPressed(MouseButton.Left) && !_leftPressed)
             {
                 _leftPressed = true;
                 _initialMousePosWhenPressed = currentMousePos;
@@ -492,21 +484,9 @@ public partial class Game1
                             }
                         }
                         break;
-                    case "Draw Hull Polygon":
-                        if (_activeMesh != null)
-                        {
-                            foreach (var component in _activeMesh._components)
-                            {
-                                if (component.DrawPolygonMouse(currentMousePos))
-                                {
-                                    break;
-                                }
-                            }
-                        }
-                        break;
                 }
             }
-            else if (mouseState.LeftButton == ButtonState.Released)
+            else if (Raylib.IsMouseButtonReleased(MouseButton.Left))
             {
                 if (_selectedToolName == "Wind" && _leftPressed)
                 {
@@ -585,7 +565,7 @@ public partial class Game1
         }
         else
         {
-            IsMouseVisible = true;
+            Raylib.ShowCursor();
         }
 
         return currentMousePos;
@@ -625,17 +605,12 @@ public partial class Game1
         }
 
         return new Vector2(
-            MathHelper.Clamp(resolved.X, 0, _windowBounds.Width),
-            MathHelper.Clamp(resolved.Y, 0, _windowBounds.Height)
+            Math.Clamp(resolved.X, 0, _windowBounds.Width),
+            Math.Clamp(resolved.Y, 0, _windowBounds.Height)
         );
     }
 
-    private void UpdateActiveToolVisualsAndActions(
-        KeyboardState keyboardState,
-        MouseState mouseState,
-        Vector2 currentMousePos,
-        bool imguiWantsMouse
-    )
+    private void UpdateActiveToolVisualsAndActions(Vector2 currentMousePos, bool imguiWantsMouse)
     {
         if (_selectedToolName == "Wind" && _leftPressed)
         {
@@ -654,7 +629,7 @@ public partial class Game1
                 _windDirectionArrow = new VectorGraphics.PrimitiveBatch.Arrow(
                     _initialMousePosWhenPressed,
                     currentMousePos,
-                    Color.Cyan,
+                    new Raylib_cs.Color(0, 255, 255, 255),
                     arrowThickness
                 );
 
@@ -690,7 +665,7 @@ public partial class Game1
                 _cutLine = new VectorGraphics.PrimitiveBatch.Line(
                     _initialMousePosWhenPressed,
                     currentMousePos,
-                    Color.Red,
+                    new Raylib_cs.Color(255, 0, 0, 255),
                     thickness
                 );
             }
@@ -705,7 +680,7 @@ public partial class Game1
             float distance = (float)props["DistanceBetweenParticles"];
             bool pinExteriorEdgeParticles = (bool)props["PinExteriorEdgeParticles"];
             bool connectDiagonalsBothWays = (bool)props["ConnectDiagonalsBothWays"];
-            if (keyboardState.IsKeyDown(Keys.C) && !_prevKeyboardState.IsKeyDown(Keys.C))
+            if (Raylib.IsKeyPressed(KeyboardKey.C))
             {
                 MeshHistoryPush();
                 _activeMesh = Mesh.CreateGridMesh(
@@ -719,13 +694,20 @@ public partial class Game1
             }
 
             if (_leftPressed)
-                _selectRectangle = new VectorGraphics.PrimitiveBatch.Rectangle(
-                    GetRectangleFromPoints(_initialMousePosWhenPressed, currentMousePos),
-                    new Color(Color.DarkGreen, 0.05f),
-                    true,
-                    2,
-                    Color.Yellow
+            {
+                var r = GetRectangleFromPoints(_initialMousePosWhenPressed, currentMousePos);
+                var pos = new Vector2(r.X, r.Y);
+                var size = new Vector2(r.Width, r.Height);
+                var rect = new VectorGraphics.PrimitiveBatch.Rectangle(
+                    pos,
+                    size,
+                    new Raylib_cs.Color((byte)0, (byte)100, (byte)0, (byte)13),
+                    true
                 );
+                rect.edgeWidth = 2;
+                rect.edgeColor = new Raylib_cs.Color((byte)255, (byte)255, (byte)0, (byte)255);
+                _selectRectangle = rect;
+            }
             else
             {
                 _selectRectangle = null;
@@ -737,12 +719,14 @@ public partial class Game1
 
             if (props.ContainsKey("RectangleSelect") && _leftPressed)
             {
+                var r = GetRectangleFromPoints(_initialMousePosWhenPressed, currentMousePos);
+                var pos = new Vector2(r.X, r.Y);
+                var size = new Vector2(r.Width, r.Height);
                 _selectRectangle = new VectorGraphics.PrimitiveBatch.Rectangle(
-                    GetRectangleFromPoints(_initialMousePosWhenPressed, currentMousePos),
-                    new Color(Color.Green, 0.05f),
-                    true,
-                    2,
-                    Color.Green
+                    pos,
+                    size,
+                    new Raylib_cs.Color((byte)0, (byte)0, (byte)255, (byte)25),
+                    true
                 );
             }
             else
@@ -752,14 +736,7 @@ public partial class Game1
         }
         else if (_selectedToolName == "Add Polygon")
         {
-            _activeMesh.BuildPolygon(
-                keyboardState,
-                _prevKeyboardState,
-                mouseState,
-                _prevMouseState,
-                imguiWantsMouse,
-                MeshHistoryPush
-            );
+            _activeMesh.BuildPolygon(imguiWantsMouse, MeshHistoryPush);
         }
     }
 }

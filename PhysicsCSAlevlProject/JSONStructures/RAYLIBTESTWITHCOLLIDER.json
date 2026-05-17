@@ -1,0 +1,119 @@
+{
+  "$type": "PhysicsCSAlevlProject.FileWriteableMesh, PhysicsCSAlevlProject",
+  "Particles": [
+    {
+      "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 510.6832,
+        "Y": 312.34232
+      },
+      "Mass": 1.0,
+      "IsPinned": false,
+      "ParticleKind": "Default"
+    },
+    {
+      "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 106.653244,
+        "Y": 758.0
+      },
+      "Mass": 1.0,
+      "IsPinned": false,
+      "ParticleKind": "Default"
+    },
+    {
+      "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 125.85065,
+        "Y": 758.0
+      },
+      "Mass": 1.0,
+      "IsPinned": false,
+      "ParticleKind": "Default"
+    }
+  ],
+  "Sticks": [],
+  "Colliders": [
+    {
+      "$type": "PhysicsCSAlevlProject.PolygonSeperatedAxisCollider, PhysicsCSAlevlProject",
+      "Vertices": [
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 177.63672,
+          "Y": 309.6953
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 177.0,
+          "Y": 450.96875
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 287.625,
+          "Y": 490.3125
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 434.4297,
+          "Y": 502.0547
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 627.9531,
+          "Y": 502.8672
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 787.5703,
+          "Y": 314.54297
+        }
+      ],
+      "worldVertices": [
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        }
+      ],
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "angle": 0.0
+    }
+  ],
+  "SpringConstant": 5000.0,
+  "Drag": 0.997,
+  "Mass": 0.1,
+  "CollisionFrictionCoefficient": 0.2,
+  "CollisionBounceCoefficient": 0.2
+}

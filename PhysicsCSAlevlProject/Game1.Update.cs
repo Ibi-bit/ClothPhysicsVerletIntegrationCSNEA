@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 
 namespace PhysicsCSAlevlProject;
 
@@ -10,13 +12,9 @@ public partial class Game1
     /// <summary>
     /// used to make sure that a keyboard press is only the inital press and not repeated while the key is held down
     /// </summary>
-    private KeyboardState _prevKeyboardState;
-
     /// <summary>
     /// used to make sure that a mouse click is only the inital click and not repeated while the button is held down, also stores the previous mouse position for use in dragging calculation
     /// </summary>
-    private MouseState _prevMouseState;
-
     /// <summary>
     /// stores the position of the previous frames mouse pos to interpolate drags as the physics update multiple times per frame
     /// </summary>
@@ -71,48 +69,35 @@ public partial class Game1
     /// <param name="gameTime"></param>
     protected override void Update(GameTime gameTime)
     {
-        KeyboardState keyboardState = Keyboard.GetState();
         float frameTime = (float)Math.Min(gameTime.ElapsedGameTime.TotalSeconds, 0.1);
         ProcessDebugCommands();
         bool ctrlHeld =
-            keyboardState.IsKeyDown(Keys.LeftControl) || keyboardState.IsKeyDown(Keys.RightControl);
+            Raylib.IsKeyDown(KeyboardKey.LeftControl) || Raylib.IsKeyDown(KeyboardKey.RightControl);
         bool shiftHeld =
-            keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift);
+            Raylib.IsKeyDown(KeyboardKey.LeftShift) || Raylib.IsKeyDown(KeyboardKey.RightShift);
 
-        HandleUndoRedoShortcuts(keyboardState, ctrlHeld, shiftHeld);
+        HandleUndoRedoShortcuts(ctrlHeld, shiftHeld);
         UpdateCursorColliderFromToolSettings();
-        HandlePauseAndStepHotkeys(keyboardState);
-        HandleDirectToolSelection(keyboardState);
+        HandlePauseAndStepHotkeys();
+        HandleDirectToolSelection();
 
         if (!_paused)
         {
             _timeAccumulator += frameTime;
         }
 
-        MouseState mouseState = Mouse.GetState();
-        Vector2 currentMousePos = new Vector2(mouseState.X, mouseState.Y);
+        Vector2 currentMousePos = Raylib.GetMousePosition();
 
         bool imguiWantsMouse = ImGuiNET.ImGui.GetIO().WantCaptureMouse;
 
-        currentMousePos = HandleMouseAndToolInput(mouseState, currentMousePos, imguiWantsMouse);
+        currentMousePos = HandleMouseAndToolInput(currentMousePos, imguiWantsMouse);
         SetCursorColliderCenter(currentMousePos);
-        UpdateActiveToolVisualsAndActions(
-            keyboardState,
-            mouseState,
-            currentMousePos,
-            imguiWantsMouse
-        );
+        UpdateActiveToolVisualsAndActions(currentMousePos, imguiWantsMouse);
         RunPhysicsUpdate(currentMousePos);
-        ApplyPostPhysicsToolEffects(mouseState, currentMousePos);
+        ApplyPostPhysicsToolEffects(currentMousePos);
 
         _previousMousePos = currentMousePos;
-        if(_activeMesh.IsTopologyDirty || _activeMesh._components.Count == 0)
-        {
-            _activeMesh.CleanTopology(_activeMesh.Particles);
-        }
         base.Update(gameTime);
-        _prevKeyboardState = keyboardState;
-        _prevMouseState = mouseState;
     }
 
     private Vector2 GetCursorColliderCenter()

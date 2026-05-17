@@ -3,14 +3,22 @@
   "Particles": [
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "458, 119",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 458.0,
+        "Y": 119.0
+      },
       "Mass": 0.1,
       "IsPinned": true,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "459.8247, 414.975",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 459.8247,
+        "Y": 414.975
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"

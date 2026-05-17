@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xna.Framework;
 using VectorGraphics;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 
 namespace PhysicsCSAlevlProject;
 
@@ -127,11 +130,11 @@ public partial class Game1
             if (count > 0 && std > 1e-5f)
             {
                 float z = (e - mean) / std;
-                intensity = MathHelper.Clamp((z - 0.5f) / 1.5f, 0f, 1f);
+                intensity = Math.Clamp((z - 0.5f) / 1.5f, 0f, 1f);
             }
             else
             {
-                intensity = MathHelper.Clamp((L / s.Length - 1f) / 0.5f, 0f, 1f);
+                intensity = Math.Clamp((L / s.Length - 1f) / 0.5f, 0f, 1f);
             }
             float eased = intensity * intensity;
             s.Color = Color.Lerp(Color.White, Color.Red, eased);

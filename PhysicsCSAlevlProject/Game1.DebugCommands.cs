@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using ImGuiNET;
-using Microsoft.Xna.Framework;
+using Raylib_cs;
 
 namespace PhysicsCSAlevlProject;
 
@@ -154,7 +155,7 @@ public partial class Game1
 
             if (command.CommandPath[0] == "Exit")
             {
-                Exit();
+                Raylib.CloseWindow();
                 return;
             }
 

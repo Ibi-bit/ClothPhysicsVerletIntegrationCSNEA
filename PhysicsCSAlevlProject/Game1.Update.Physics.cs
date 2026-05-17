@@ -1,6 +1,8 @@
 using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 
 namespace PhysicsCSAlevlProject;
 
@@ -12,11 +14,11 @@ public partial class Game1
         const int maxStepsPerFrame = 10000;
         int subSteps = Math.Max(1, _subSteps);
         Vector2 mouseDelta = currentMousePos - _previousMousePos;
-        int plannedStepsThisFrame = _paused
-            ? _stepsToStep
-            : Math.Min((int)(_timeAccumulator / FixedTimeStep), maxStepsPerFrame);
-        int totalIterations = Math.Max(1, plannedStepsThisFrame * subSteps);
-        Vector2 deltaPerIteration = mouseDelta / totalIterations;
+            int plannedStepsThisFrame = _paused
+                ? _stepsToStep
+                : Math.Min((int)(_timeAccumulator / FixedTimeStep), maxStepsPerFrame);
+            int totalIterations = Math.Max(1, plannedStepsThisFrame * subSteps);
+            Vector2 deltaPerIteration = mouseDelta / totalIterations;
 
         while (
             (_timeAccumulator >= FixedTimeStep || _stepsToStep > 0)
@@ -135,7 +137,7 @@ public partial class Game1
         }
     }
 
-    private void ApplyPostPhysicsToolEffects(MouseState mouseState, Vector2 currentMousePos)
+    private void ApplyPostPhysicsToolEffects(Vector2 currentMousePos)
     {
         if (_selectedToolName == "Drag")
         {
@@ -149,7 +151,7 @@ public partial class Game1
 
             if (_paused)
             {
-                DragMeshParticles(mouseState, _leftPressed, _meshParticlesInDragArea);
+                DragMeshParticles(_leftPressed, _meshParticlesInDragArea);
             }
         }
         else if (_selectedToolName == "Move Collider" && _draggedCollider != null && _leftPressed)

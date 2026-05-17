@@ -1,6 +1,8 @@
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
@@ -19,7 +21,7 @@ public class Tool
         this.CursorIcon = CursorIcon;
     }
 
-    public void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch, Vector2 cursorPosition)
+    public void Draw( Vector2 cursorPosition)
     {
         if (CursorIcon != null)
         {
@@ -33,7 +35,7 @@ public class Tool
                     rect.size,
                     rect.color
                 );
-                drawRect.Draw(spriteBatch, primitiveBatch);
+                drawRect.Draw();
             }
             else if (CursorIcon is PrimitiveBatch.Circle circle)
             {
@@ -43,7 +45,7 @@ public class Tool
                     circle.color,
                     true
                 );
-                drawCircle.Draw(spriteBatch, primitiveBatch);
+                drawCircle.Draw();
             }
         }
     }

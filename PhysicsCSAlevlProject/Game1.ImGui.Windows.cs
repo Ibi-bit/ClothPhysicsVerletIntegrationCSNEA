@@ -1,6 +1,8 @@
 using System;
 using ImGuiNET;
-using Microsoft.Xna.Framework;
+using Raylib_cs;
+using rlImGui_cs;
+using System.Numerics;
 
 namespace PhysicsCSAlevlProject;
 
@@ -155,12 +157,12 @@ public partial class Game1
                     : 1f;
         }
 
-        int newWidth = _changedBounds.Width;
-        int newHeight = _changedBounds.Height;
-        bool widthChanged = ImGui.InputInt("Width", ref newWidth);
+        float newWidth = _changedBounds.Width;
+        float newHeight = _changedBounds.Height;
+        bool widthChanged = ImGui.InputFloat("Width", ref newWidth);
 
         ImGui.BeginDisabled(_keepAspectRatio);
-        bool heightChanged = ImGui.InputInt("Height", ref newHeight);
+        bool heightChanged = ImGui.InputFloat("Height", ref newHeight);
         ImGui.EndDisabled();
 
         if (_keepAspectRatio)

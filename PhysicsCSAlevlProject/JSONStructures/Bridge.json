@@ -3,77 +3,121 @@
   "Particles": [
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "138, 442",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 138.0,
+        "Y": 442.0
+      },
       "Mass": 0.1,
       "IsPinned": true,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "247.00333, 445.15445",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 247.00333,
+        "Y": 445.15445
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "365.99893, 449.78964",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 365.99893,
+        "Y": 449.78964
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "466.95355, 454.0292",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 466.95355,
+        "Y": 454.0292
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "547.0189, 451.90414",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 547.0189,
+        "Y": 451.90414
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "648, 455",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 648.0,
+        "Y": 455.0
+      },
       "Mass": 0.1,
       "IsPinned": true,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "587.11005, 373.8397",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 587.11005,
+        "Y": 373.8397
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "512.029, 370.8406",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 512.029,
+        "Y": 370.8406
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "421.02634, 367.7909",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 421.02634,
+        "Y": 367.7909
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "309.98773, 363.03418",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 309.98773,
+        "Y": 363.03418
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "209.05742, 358.15536",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 209.05742,
+        "Y": 358.15536
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"

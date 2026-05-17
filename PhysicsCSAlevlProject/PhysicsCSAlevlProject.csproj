@@ -12,11 +12,14 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
+    <!-- <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
-    <PackageReference Include="Contentless" Version="4.2.0" />
+    <PackageReference Include="Contentless" Version="4.2.0" /> -->
+    <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
     <PackageReference Include="Npgsql" Version="10.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Raylib-cs" Version="7.0.2" />
+    <PackageReference Include="rlImgui-cs" Version="3.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game1.Core.cs" />
@@ -41,18 +44,14 @@
     <Compile Include="Objects.Particles.cs" />
     <Compile Include="Objects.Sticks.cs" />
     <Compile Include="Objects.Mesh.cs" />
-    <Compile Include="Objects.Mesh.Component.cs" />
     <Compile Include="Objects.FileWriteableMesh.cs" />
     <Compile Include="Objects.Tool.cs" />
     <Compile Include="DataStructures.Stack.cs" />
     <Compile Include="libs\MonoGame2DVectorGraphics\Vector.cs" />
   </ItemGroup>
-  <ItemGroup>
+  <!-- <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MonoGame.ImGuiNet\MonoGame.ImGuiNet\Monogame.ImGuiNet.csproj" />
-  </ItemGroup>
+  </ItemGroup> -->
   <ItemGroup>
     <Folder Include="JSONStructures\" />
   </ItemGroup>

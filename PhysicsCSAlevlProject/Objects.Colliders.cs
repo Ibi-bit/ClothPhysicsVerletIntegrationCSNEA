@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Numerics;
+using Raylib_cs;
 using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
@@ -38,9 +38,15 @@ public abstract class Collider
     /// <summary>
     /// Draws the collider
     /// </summary>
-    /// <param name="spriteBatch"></param>
-    /// <param name="primitiveBatch"></param>
-    public virtual void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch) { }
+    public virtual void Draw() { }
+
+    public static bool IsPointInside(Rectangle rect, Vector2 point)
+    {
+        return point.X >= rect.X
+            && point.X <= rect.X + rect.Width
+            && point.Y >= rect.Y
+            && point.Y <= rect.Y + rect.Height;
+    }
 }
 
 /// <summary>
@@ -74,7 +80,7 @@ public class CircleCollider : Collider
 
     public override bool ContainsPoint(Vector2 point, out Vector2 closestPoint)
     {
-        if (!BroadPhase.Contains(point))
+        if (!IsPointInside(BroadPhase, point))
         {
             closestPoint = point;
             return false;
@@ -92,10 +98,10 @@ public class CircleCollider : Collider
         return false;
     }
 
-    public override void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch)
+    public override void Draw()
     {
         var circle = new PrimitiveBatch.Circle(Position, Radius, Color.Red, false);
-        circle.Draw(spriteBatch, primitiveBatch);
+        circle.Draw();
     }
 }
 
@@ -120,29 +126,29 @@ public class RectangleCollider(Rectangle rectangle) : Collider
     /// <returns></returns>
     public override bool ContainsPoint(Vector2 point, out Vector2 closestPoint)
     {
-        if (Rectangle.Contains(point))
+        if (IsPointInside(Rectangle, point))
         {
-            float leftDist = point.X - Rectangle.Left;
-            float rightDist = Rectangle.Right - point.X;
-            float topDist = point.Y - Rectangle.Top;
-            float bottomDist = Rectangle.Bottom - point.Y;
+            float leftDist = point.X - Rectangle.X;
+            float rightDist = Rectangle.X + Rectangle.Width - point.X;
+            float topDist = point.Y - Rectangle.Y;
+            float bottomDist = Rectangle.Y + Rectangle.Height - point.Y;
 
             float minDist = leftDist;
-            closestPoint = new Vector2(Rectangle.Left, point.Y);
+            closestPoint = new Vector2(Rectangle.X, point.Y);
 
             if (rightDist < minDist)
             {
                 minDist = rightDist;
-                closestPoint = new Vector2(Rectangle.Right, point.Y);
+                closestPoint = new Vector2(Rectangle.X + Rectangle.Width, point.Y);
             }
             if (topDist < minDist)
             {
                 minDist = topDist;
-                closestPoint = new Vector2(point.X, Rectangle.Top);
+                closestPoint = new Vector2(point.X, Rectangle.Y);
             }
             if (bottomDist < minDist)
             {
-                closestPoint = new Vector2(point.X, Rectangle.Bottom);
+                closestPoint = new Vector2(point.X, Rectangle.Y + Rectangle.Height);
             }
             return true;
         }
@@ -151,10 +157,15 @@ public class RectangleCollider(Rectangle rectangle) : Collider
         return false;
     }
 
-    public override void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch)
+    public override void Draw()
     {
-        var rect = new PrimitiveBatch.Rectangle(Rectangle, Color.Red);
-        rect.Draw(spriteBatch, primitiveBatch);
+        var rect = new PrimitiveBatch.Rectangle(
+            new Vector2(Rectangle.X, Rectangle.Y),
+            new Vector2(Rectangle.Width, Rectangle.Height),
+            Color.Red,
+            false
+        );
+        rect.Draw();
     }
 }
 
@@ -200,13 +211,10 @@ public class SeperatedAxisRectangleCollider : PolygonSeperatedAxisCollider
             if (rectangleDraw != null)
             {
                 rectangleDraw = new PrimitiveBatch.Rectangle(
-                    new Rectangle(
-                        (int)(_position.X - HalfWidth),
-                        (int)(_position.Y - HalfHeight),
-                        (int)(HalfWidth * 2),
-                        (int)(HalfHeight * 2)
-                    ),
-                    Color.Red
+                    new Vector2(_position.X - HalfWidth, _position.Y - HalfHeight),
+                    new Vector2(HalfWidth * 2, HalfHeight * 2),
+                    Color.Red,
+                    true
                 )
                 {
                     rotation = angle,
@@ -280,7 +288,12 @@ public class SeperatedAxisRectangleCollider : PolygonSeperatedAxisCollider
             rectangle.X + rectangle.Width / 2,
             rectangle.Y + rectangle.Height / 2
         );
-        rectangleDraw = new PrimitiveBatch.Rectangle(rectangle, Color.Red);
+        rectangleDraw = new PrimitiveBatch.Rectangle(
+            new Vector2(rectangle.X, rectangle.Y),
+            new Vector2(rectangle.Width, rectangle.Height),
+            Color.Red,
+            true
+        );
         Angle = angle;
         Vertices =
         [
@@ -329,9 +342,9 @@ public class SeperatedAxisRectangleCollider : PolygonSeperatedAxisCollider
         return true;
     }
 
-    public override void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch)
+    public override void Draw()
     {
-        rectangleDraw.Draw(spriteBatch, primitiveBatch);
+        rectangleDraw.Draw();
     }
 }
 
@@ -471,7 +484,7 @@ public class PolygonSeperatedAxisCollider : Collider
     {
         if (vertices == null || vertices.Length == 0)
         {
-            return Rectangle.Empty;
+            return new Rectangle(0, 0, 0, 0);
         }
 
         Vector2 xmin = vertices[0];
@@ -545,7 +558,7 @@ public class PolygonSeperatedAxisCollider : Collider
     {
         Vector2 AB = B - A;
         float t = Vector2.Dot(P - A, AB) / AB.LengthSquared();
-        t = MathHelper.Clamp(t, 0f, 1f);
+        t = Math.Clamp(t, 0f, 1f);
         return A + AB * t;
     }
 
@@ -564,7 +577,7 @@ public class PolygonSeperatedAxisCollider : Collider
 
         UpdateWorldCacheIfNeeded();
 
-        if (!_worldBroadPhase.Contains(point))
+        if (!IsPointInside(_worldBroadPhase, point))
         {
             return false;
         }
@@ -613,7 +626,7 @@ public class PolygonSeperatedAxisCollider : Collider
         return inside;
     }
 
-    public override void Draw(SpriteBatch spriteBatch, PrimitiveBatch primitiveBatch)
+    public override void Draw()
     {
         UpdateWorldCacheIfNeeded();
 
@@ -625,7 +638,7 @@ public class PolygonSeperatedAxisCollider : Collider
                 Color.Red,
                 2
             );
-            line.Draw(spriteBatch, primitiveBatch);
+            line.Draw();
         }
     }
 }

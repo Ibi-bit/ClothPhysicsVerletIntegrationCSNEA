@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System.Numerics;
+using ImGuiNET;
+using Raylib_cs;
+using rlImGui_cs;
 using VectorGraphics;
 
 namespace PhysicsCSAlevlProject;
@@ -131,83 +132,7 @@ class Mesh
     /// </summary>
     private readonly Dictionary<int, HashSet<int>> _particleToStickIds = new();
 
-    private bool _topologyDirty = false;
-
-    public List<MeshComponent> _components { get; private set; } = new();
-
-    public bool IsTopologyDirty => _topologyDirty;
-
-    public void CleanTopology(IReadOnlyDictionary<int, DrawableParticle> particles)
-    {
-        var comp = GetConnectedComponents();
-        _components.Clear();
-        int componentIndex = 0;
-        foreach (var c in comp)
-        {
-            var componentParticles = c.ToHashSet();
-            var stickIds = new HashSet<int>();
-
-            foreach (var stick in Sticks.Values)
-            {
-                if (
-                    componentParticles.Contains(stick.P1Id)
-                    && componentParticles.Contains(stick.P2Id)
-                )
-                {
-                    stickIds.Add(stick.Id);
-                }
-            }
-
-            var component = new MeshComponent(stickIds);
-            component._color = ComponentColor(componentIndex);
-            component.UpdateMesh(particles, Sticks);
-            _components.Add(component);
-            componentIndex++;
-        }
-
-        _topologyDirty = false;
-    }
-
-    public void RefreshComponentMeshes(IReadOnlyDictionary<int, DrawableParticle> particles)
-    {
-        foreach (var component in _components)
-        {
-            component.UpdateMesh(particles, Sticks);
-        }
-    }
-
-    private void MarkTopologyDirty()
-    {
-        _topologyDirty = true;
-    }
-
-    private static Vector3 ComponentColor(int index)
-    {
-        float hue = (index * 0.61803398875f) % 1f;
-        float saturation = 0.65f;
-        float value = 0.95f;
-
-        float h6 = hue * 6f;
-        float c = value * saturation;
-        float x = c * (1f - MathF.Abs((h6 % 2f) - 1f));
-        float m = value - c;
-
-        float r, g, b;
-        if (h6 < 1f)
-            (r, g, b) = (c, x, 0f);
-        else if (h6 < 2f)
-            (r, g, b) = (x, c, 0f);
-        else if (h6 < 3f)
-            (r, g, b) = (0f, c, x);
-        else if (h6 < 4f)
-            (r, g, b) = (0f, x, c);
-        else if (h6 < 5f)
-            (r, g, b) = (x, 0f, c);
-        else
-            (r, g, b) = (c, 0f, x);
-
-        return new Vector3(r + m, g + m, b + m);
-    }
+    private void MarkTopologyDirty() { }
 
     public void RestoreStickReferences()
     {
@@ -234,7 +159,6 @@ class Mesh
             if (_particleToStickIds.TryGetValue(stick.P2Id, out var id2))
                 id2.Add(stick.Id);
         }
-        MarkTopologyDirty();
     }
 
     public Mesh DeepCopy()
@@ -390,22 +314,11 @@ class Mesh
     /// <param name="previousMouseState"></param>
     /// <param name="imguiWantsMouse"></param>
     /// <param name="beforeChange"></param>
-    public void BuildPolygon(
-        KeyboardState keyboardState,
-        KeyboardState previousKeyboardState,
-        MouseState mouseState,
-        MouseState previousMouseState,
-        bool imguiWantsMouse,
-        Action beforeChange = null
-    )
+    public void BuildPolygon(bool imguiWantsMouse, Action beforeChange = null)
     {
-        Vector2 mousePos = new Vector2(mouseState.X, mouseState.Y);
+        Vector2 mousePos = Raylib.GetMousePosition();
 
-        if (
-            mouseState.LeftButton == ButtonState.Pressed
-            && previousMouseState.LeftButton == ButtonState.Released
-            && !imguiWantsMouse
-        )
+        if (Raylib.IsMouseButtonPressed(MouseButton.Left) && !imguiWantsMouse)
         {
             beforeChange?.Invoke();
             if (!_isPolygonBuilding)
@@ -432,7 +345,7 @@ class Mesh
             }
         }
 
-        if (keyboardState.IsKeyDown(Keys.Enter) && !previousKeyboardState.IsKeyDown(Keys.Enter))
+        if (Raylib.IsKeyPressed(KeyboardKey.Enter))
         {
             if (_isPolygonBuilding && _polygonVertices.Count >= 3)
             {
@@ -441,9 +354,7 @@ class Mesh
                 ResetPolygonBuilder();
             }
         }
-        else if (
-            keyboardState.IsKeyDown(Keys.Escape) && !previousKeyboardState.IsKeyDown(Keys.Escape)
-        )
+        else if (Raylib.IsKeyPressed(KeyboardKey.Escape))
         {
             if (_isPolygonBuilding)
             {
@@ -451,7 +362,7 @@ class Mesh
                 ResetPolygonBuilder();
             }
         }
-        else if (keyboardState.IsKeyDown(Keys.C) && !previousKeyboardState.IsKeyDown(Keys.C))
+        else if (Raylib.IsKeyPressed(KeyboardKey.C))
         {
             if (_isPolygonBuilding && _polygonVertices.Count >= 2)
             {
@@ -581,7 +492,7 @@ class Mesh
 
         Vector2 direction = End - Start;
         float segmentLength = direction.Length() / numberOfSticks;
-        direction.Normalize();
+        direction = Vector2.Normalize(direction);
 
         List<int> particleIds = new List<int>();
         for (int i = 0; i <= numberOfSticks; i++)
@@ -639,18 +550,13 @@ class Mesh
         }
     }
 
-    public void Draw(
-        SpriteBatch spriteBatch,
-        PrimitiveBatch primitiveBatch,
-        bool drawParticles,
-        bool drawConstraints
-    )
+    public void Draw(bool drawParticles, bool drawConstraints)
     {
         if (drawConstraints)
         {
             foreach (var s in Sticks.Values)
             {
-                s.Draw(spriteBatch, primitiveBatch, stickDrawThickness);
+                s.Draw();
             }
         }
 
@@ -658,7 +564,7 @@ class Mesh
         {
             foreach (var p in Particles.Values)
             {
-                p.Draw(spriteBatch, primitiveBatch);
+                p.Draw();
             }
         }
     }
@@ -779,43 +685,6 @@ class Mesh
         return mesh;
     }
 
-    public List<List<int>> GetConnectedComponents()
-    {
-        var visited = new HashSet<int>();
-        var components = new List<List<int>>();
-
-        foreach (var particleId in Particles.Keys)
-        {
-            if (!visited.Contains(particleId))
-            {
-                var component = new List<int>();
-                var queue = new Queue<int>();
-                queue.Enqueue(particleId);
-                visited.Add(particleId);
-
-                while (queue.Count > 0)
-                {
-                    int currentId = queue.Dequeue();
-                    component.Add(currentId);
-
-                    foreach (var stick in GetSticksForParticle(currentId))
-                    {
-                        int neighborId = stick.P1Id == currentId ? stick.P2Id : stick.P1Id;
-                        if (!visited.Contains(neighborId))
-                        {
-                            visited.Add(neighborId);
-                            queue.Enqueue(neighborId);
-                        }
-                    }
-                }
-
-                components.Add(component);
-            }
-        }
-
-        return components;
-    }
-
     [ConsoleCommand("Mesh.ResetSimulation")]
     public void ResetSimulation(string[] parameters)
     {
@@ -864,39 +733,24 @@ class Mesh
 
         for (int i = 0; i < rimParticleCount; i++)
         {
-            float angle = 2 * MathF.PI * i / rimParticleCount;
-
+            float angle = 2f * MathF.PI * i / rimParticleCount;
             Vector2 innerPos =
                 center
-                + new Vector2(innerRadius * MathF.Cos(angle), innerRadius * MathF.Sin(angle));
-            int innerId = AddParticleAt(innerPos);
-            innerRimIds.Add(innerId);
-
+                + new Vector2(MathF.Cos(angle) * innerRadius, MathF.Sin(angle) * innerRadius);
             Vector2 outerPos =
                 center
-                + new Vector2(outerRadius * MathF.Cos(angle), outerRadius * MathF.Sin(angle));
-            int outerId = AddParticleAt(outerPos);
-            outerRimIds.Add(outerId);
-        }
+                + new Vector2(MathF.Cos(angle) * outerRadius, MathF.Sin(angle) * outerRadius);
 
-        float innerStickLength = 2f * innerRadius * MathF.Sin(MathF.PI / rimParticleCount);
-        for (int i = 0; i < rimParticleCount; i++)
-        {
-            int next = (i + 1) % rimParticleCount;
-            AddStickBetween(innerRimIds[i], innerRimIds[next], innerStickLength);
-        }
-
-        float outerStickLength = 2f * outerRadius * MathF.Sin(MathF.PI / rimParticleCount);
-        for (int i = 0; i < rimParticleCount; i++)
-        {
-            int next = (i + 1) % rimParticleCount;
-            AddStickBetween(outerRimIds[i], outerRimIds[next], outerStickLength);
+            innerRimIds.Add(AddParticleAt(innerPos));
+            outerRimIds.Add(AddParticleAt(outerPos));
         }
 
         float radialStickLength = outerRadius - innerRadius;
+        float outerStickLength = 2f * outerRadius * MathF.Sin(MathF.PI / rimParticleCount);
         float diagonalStickLength = MathF.Sqrt(
             radialStickLength * radialStickLength + outerStickLength * outerStickLength
         );
+
         for (int i = 0; i < rimParticleCount; i++)
         {
             int next = (i + 1) % rimParticleCount;

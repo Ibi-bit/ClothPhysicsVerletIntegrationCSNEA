@@ -3,700 +3,1100 @@
   "Particles": [
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "235.865, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 235.865,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "213, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 213.0,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "258.73, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 258.73,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "281.595, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 281.595,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "304.46, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 304.46,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "327.325, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 327.325,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "350.19, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 350.19,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "373.055, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 373.055,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "395.91998, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 395.91998,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 131",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 131.0
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 153.865",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 153.865
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 176.73",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 176.73
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 199.595",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 199.595
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 222.45999",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 222.45999
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 245.325",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 245.325
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 268.19",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 268.19
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 291.055",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 291.055
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 313.91998",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 313.91998
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
     },
     {
       "$type": "PhysicsCSAlevlProject.FileWriteableMesh+particleData, PhysicsCSAlevlProject",
-      "Position": "418.785, 336.785",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 418.785,
+        "Y": 336.785
+      },
       "Mass": 0.1,
       "IsPinned": false,
       "ParticleKind": "Default"
@@ -2760,58 +3160,254 @@
     {
       "$type": "PhysicsCSAlevlProject.PolygonSeperatedAxisCollider, PhysicsCSAlevlProject",
       "Vertices": [
-        "40, 498",
-        "122, 539",
-        "171, 559",
-        "231, 581",
-        "303, 585",
-        "339, 584",
-        "404, 578",
-        "445, 569",
-        "475, 563",
-        "502, 561",
-        "529, 566",
-        "567, 588",
-        "598, 611",
-        "632, 623",
-        "677, 628",
-        "730, 624",
-        "784, 607",
-        "810, 592",
-        "848, 552",
-        "863, 536",
-        "888, 503",
-        "915, 470",
-        "908, 718",
-        "25, 732"
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 40.0,
+          "Y": 498.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 122.0,
+          "Y": 539.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 171.0,
+          "Y": 559.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 231.0,
+          "Y": 581.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 303.0,
+          "Y": 585.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 339.0,
+          "Y": 584.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 404.0,
+          "Y": 578.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 445.0,
+          "Y": 569.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 475.0,
+          "Y": 563.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 502.0,
+          "Y": 561.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 529.0,
+          "Y": 566.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 567.0,
+          "Y": 588.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 598.0,
+          "Y": 611.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 632.0,
+          "Y": 623.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 677.0,
+          "Y": 628.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 730.0,
+          "Y": 624.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 784.0,
+          "Y": 607.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 810.0,
+          "Y": 592.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 848.0,
+          "Y": 552.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 863.0,
+          "Y": 536.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 888.0,
+          "Y": 503.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 915.0,
+          "Y": 470.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 908.0,
+          "Y": 718.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 25.0,
+          "Y": 732.0
+        }
       ],
       "worldVertices": [
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0",
-        "0, 0"
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        },
+        {
+          "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+          "X": 0.0,
+          "Y": 0.0
+        }
       ],
-      "Position": "0, 0",
+      "Position": {
+        "$type": "System.Numerics.Vector2, System.Private.CoreLib",
+        "X": 0.0,
+        "Y": 0.0
+      },
       "angle": 0.0
     }
   ],
