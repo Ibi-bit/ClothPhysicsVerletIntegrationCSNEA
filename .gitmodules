@@ -1,6 +1,3 @@
 [submodule "PhysicsCSAlevlProject/libs/MonoGame2DVectorGraphics"]
 	path = PhysicsCSAlevlProject/libs/MonoGame2DVectorGraphics
 	url = https://github.com/Ullerman/MonoGame2DVectorGraphics
-[submodule "MonoGame.ImGuiNet"]
-	path = MonoGame.ImGuiNet
-	url = https://github.com/tsMezotic/MonoGame.ImGuiNet.git
