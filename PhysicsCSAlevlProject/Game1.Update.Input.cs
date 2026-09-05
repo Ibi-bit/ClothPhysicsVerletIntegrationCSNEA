@@ -548,6 +548,15 @@ public partial class Game1
 
                 if (_selectedToolName == "PhysicsDrag" && _leftPressed)
                 {
+                    foreach (int particleId in _meshParticlesInDragArea)
+                    {
+                        if (_activeMesh.Particles.TryGetValue(particleId, out var particle))
+                        {
+                            particle.AccumulatedForce = Vector2.Zero;
+                            particle.PreviousPosition = particle.Position;
+                        }
+                    }
+
                     _logger.AddLog(
                         $"PhysicsDrag released: {_meshParticlesInDragArea.Count} particles affected"
                     );
@@ -561,6 +570,7 @@ public partial class Game1
                 _windForce = Vector2.Zero;
                 _draggedCollider = null;
                 _physicsDragParticleOffsets.Clear();
+                _meshParticlesInDragArea.Clear();
             }
         }
         else
@@ -678,6 +688,7 @@ public partial class Game1
         {
             var props = _currentToolSet["Create Grid Mesh"].Properties;
             float distance = (float)props["DistanceBetweenParticles"];
+            bool addConstraints = (bool)props["Add Constraints"];
             bool pinExteriorEdgeParticles = (bool)props["PinExteriorEdgeParticles"];
             bool connectDiagonalsBothWays = (bool)props["ConnectDiagonalsBothWays"];
             if (Raylib.IsKeyPressed(KeyboardKey.C))
@@ -688,6 +699,7 @@ public partial class Game1
                     currentMousePos,
                     distance,
                     _activeMesh,
+                    addConstraints,
                     pinExteriorEdgeParticles,
                     connectDiagonalsBothWays
                 );

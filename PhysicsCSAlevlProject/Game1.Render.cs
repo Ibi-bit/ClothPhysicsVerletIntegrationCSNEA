@@ -82,6 +82,7 @@ public partial class Game1
     {
         if (imguiWantsMouse)
         {
+            Raylib.ShowCursor();
             return;
         }
 
@@ -131,10 +132,48 @@ public partial class Game1
         DrawCollisionBounds();
         DrawSceneContent();
 
-        DrawCursorOverlay(currentMousePos, imguiWantsMouse);
-
         ImGuiDraw(gameTime);
 
+        // Use the actual pointer position at draw time so the cursor never follows
+        // any smoothed or stale simulation state.
+        DrawCursorOverlay(Raylib.GetMousePosition(), imguiWantsMouse);
+
+        int debugX = (int)_windowBounds.Width - 170;
+        int debugY = 30;
+
+        Raylib.DrawText(
+            $"FPS: {Raylib.GetFPS()}",
+            debugX,
+            debugY,
+            20,
+            Color.Black
+        );
+        Raylib.DrawText(
+            $"Particles: {_activeMesh?.Particles.Count ?? 0}",
+            debugX,
+            debugY + 20,
+            20,
+            Color.Black
+        );
+        Raylib.DrawText(
+            $"Sticks: {_activeMesh?.Sticks.Count ?? 0}",
+            debugX,
+            debugY + 40,
+            20,
+            Color.Black
+        );
+        int profileLine = debugY + 60;
+        foreach (var phase in _physicsPhaseAverageMs)
+        {
+            Raylib.DrawText(
+                $"{phase.Key}: {phase.Value:F2} ms",
+                debugX,
+                profileLine,
+                16,
+                Color.Black
+            );
+            profileLine += 18;
+        }
         Raylib.EndDrawing();
     }
 

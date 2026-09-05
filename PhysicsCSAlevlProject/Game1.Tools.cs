@@ -164,7 +164,9 @@ public partial class Game1
         _buildTools["Pin"].Properties["Radius"] = 20f;
         _buildTools["Create Grid Mesh"].Properties["DistanceBetweenParticles"] = 10f;
         _buildTools["Create Grid Mesh"].Properties["PinExteriorEdgeParticles"] = false;
+        _buildTools["Create Grid Mesh"].Properties["Add Constraints"] = true;
         _buildTools["Create Grid Mesh"].Properties["ConnectDiagonalsBothWays"] = false;
+        
         _buildTools["Line Tool"].Properties["Constraints in Line"] = 100;
         _buildTools["Line Tool"].Properties["Natural Length Ratio"] = 1.0f;
         _buildTools["Oscillating Particle"].Properties["Amplitude"] = 20f;
@@ -452,7 +454,12 @@ public partial class Game1
                     {
                         props["DistanceBetweenParticles"] = distance;
                     }
-
+                    bool addConstraints = (bool)props["Add Constraints"];
+                    if (ImGui.Checkbox("Add Constraints", ref addConstraints))
+                    {
+                        props["Add Constraints"] = addConstraints;
+                    }
+                    ImGui.BeginDisabled(!addConstraints);
                     bool pinExteriorEdgeParticles = (bool)props["PinExteriorEdgeParticles"];
                     if (ImGui.Checkbox("Pin Exterior Edge Particles", ref pinExteriorEdgeParticles))
                     {
@@ -464,6 +471,7 @@ public partial class Game1
                     {
                         props["ConnectDiagonalsBothWays"] = connectDiagonalsBothWays;
                     }
+                    ImGui.EndDisabled();
                     break;
                 }
                 case "Cursor Collider":

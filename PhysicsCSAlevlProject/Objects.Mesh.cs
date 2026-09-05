@@ -608,6 +608,7 @@ class Mesh
         Vector2 End,
         float DistanceBetweenParticles,
         Mesh mesh,
+        bool addConstraints = true,
         bool pinExteriorEdgeParticles = false,
         bool connectDiagonalsBothWays = false
     )
@@ -632,6 +633,8 @@ class Mesh
                 particleIds[x, y] = mesh.AddParticleAt(position);
             }
         }
+        if (!addConstraints)
+            return mesh;
 
         for (int x = 0; x < width; x++)
         {
@@ -786,6 +789,7 @@ class Mesh
         mesh.drag = drag;
         mesh.mass = mass;
         int offsetid = mesh._nextParticleId;
+
 
         CreateGridMesh(Start, End, naturalLength, mesh);
         int idWidth = (int)Math.Max(1, Math.Abs(End.X - Start.X) / naturalLength) + 1;

@@ -25,6 +25,8 @@ class Stick
     /// the natural length of the stick, which is the distance between the two particles when the stick is at rest
     /// </summary>
     public float Length;
+    public float Compliance { get; set; } = 0.0f;
+    public float Lambda { get; set; } = 0.0f;
 
     public Stick()
     {

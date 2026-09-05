@@ -35,23 +35,41 @@ public partial class Game1
         {
             ImGui.Text("Local Structures:");
 
-            if (ImGui.Button("Refresh List"))
+            if (_isLoadingQuickMeshes)
             {
-                _quickMeshes = LoadAllMeshesFromDirectory(_structurePath);
+                ImGui.TextDisabled(
+                    string.IsNullOrWhiteSpace(_loadingQuickMeshFile)
+                        ? "Loading structures..."
+                        : $"Loading: {_loadingQuickMeshFile}"
+                );
+            }
+            else if (ImGui.Button("Refresh List"))
+            {
+                _ = LoadAllMeshesFromDirectoryAsync(_structurePath);
             }
 
             if (ImGui.Button("Save Current Mesh"))
             {
                 SaveMeshToJSON(_activeMesh, _quickStructureName, _structurePath);
-                _quickMeshes = LoadAllMeshesFromDirectory(_structurePath);
+                _ = LoadAllMeshesFromDirectoryAsync(_structurePath);
             }
 
             ImGui.SameLine();
             ImGui.InputText("Structure Name", ref _quickStructureName, 100);
 
             ImGui.BeginChild("QuickStructureLocalList", new System.Numerics.Vector2(0, 200));
-            ImGui.BeginDisabled(_quickMeshes.Count == 0);
-            foreach (var meshEntry in _quickMeshes)
+            Dictionary<string, Mesh> quickMeshesSnapshot;
+            lock (_quickMeshesLock)
+            {
+                quickMeshesSnapshot = new Dictionary<string, Mesh>(_quickMeshes);
+            }
+
+            if (quickMeshesSnapshot.Count == 0 && !_isLoadingQuickMeshes)
+            {
+                ImGui.TextDisabled("No local structures found.");
+            }
+
+            foreach (var meshEntry in quickMeshesSnapshot)
             {
                 if (ImGui.MenuItem(meshEntry.Key))
                 {
@@ -62,7 +80,6 @@ public partial class Game1
                     SetMode(MeshMode.Interact);
                 }
             }
-            ImGui.EndDisabled();
             ImGui.EndChild();
         }
         else

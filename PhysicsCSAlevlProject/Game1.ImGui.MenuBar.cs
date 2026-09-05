@@ -142,8 +142,10 @@ public partial class Game1
         {
             ImGui.SliderFloat("Global Mass", ref _activeMesh.mass, 0.1f, 100f);
             ImGui.SliderFloat("Spring Constant", ref _activeMesh.springConstant, 100f, 100000f);
+            ImGui.SliderInt("Constraint Iterations", ref _solverIterations, 1, 16);
+            ImGui.TextDisabled("XPBD compliance is derived from spring stiffness.");
 
-            ImGui.SliderInt("Physics Substeps", ref _subSteps, 10, 120);
+            ImGui.SliderInt("Physics Substeps", ref _subSteps, 1, 20);
             ImGui.SliderFloat(
                 "Collision Friction Coefficient",
                 ref _activeMesh.collisionFrictionCoefficient,

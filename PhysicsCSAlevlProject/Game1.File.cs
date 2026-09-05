@@ -160,9 +160,16 @@ public partial class Game1
         {
             try
             {
+                _loadingQuickMeshFile = Path.GetFileName(filePath);
                 Mesh mesh = LoadMeshFromJSON(filePath);
                 string fileName = Path.GetFileNameWithoutExtension(Path.GetFileName(filePath));
                 meshes[fileName] = mesh;
+
+                lock (_quickMeshesLock)
+                {
+                    _quickMeshes ??= new Dictionary<string, Mesh>();
+                    _quickMeshes[fileName] = mesh;
+                }
             }
             catch (Exception ex)
             {
@@ -173,6 +180,42 @@ public partial class Game1
             }
         }
 
+        _loadingQuickMeshFile = string.Empty;
         return meshes;
+    }
+
+    /// <summary>
+    /// Loads the saved mesh library in the background so startup does not block the app while reading several large JSON files.
+    /// Each file is added to the quick-mesh dictionary as soon as it finishes loading so already-loaded entries remain selectable.
+    /// </summary>
+    private async Task LoadAllMeshesFromDirectoryAsync(string directoryPath)
+    {
+        if (_isLoadingQuickMeshes)
+        {
+            return;
+        }
+
+        _isLoadingQuickMeshes = true;
+        lock (_quickMeshesLock)
+        {
+            _quickMeshes = new Dictionary<string, Mesh>();
+        }
+
+        try
+        {
+            await Task.Run(() => LoadAllMeshesFromDirectory(directoryPath));
+        }
+        catch (Exception ex)
+        {
+            _logger.AddLog(
+                $"Failed to asynchronously load local meshes: {ex.Message}",
+                ImGuiLogger.LogTypes.Error
+            );
+        }
+        finally
+        {
+            _isLoadingQuickMeshes = false;
+            _loadingQuickMeshFile = string.Empty;
+        }
     }
 }

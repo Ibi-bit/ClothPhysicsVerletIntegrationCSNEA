@@ -61,6 +61,16 @@ public partial class Game1
     private bool _showTeacherAssignmentsWindow;
 
     /// <summary>
+    /// true while the large local mesh library is being loaded asynchronously
+    /// </summary>
+    private bool _isLoadingQuickMeshes;
+
+    /// <summary>
+    /// the current JSON file being loaded while the mesh library is being prepared asynchronously
+    /// </summary>
+    private string _loadingQuickMeshFile;
+
+    /// <summary>
     /// the logger used for logging messages to the ImGui logger window
     /// </summary>
     private ImGuiLogger _logger;
@@ -94,6 +104,11 @@ public partial class Game1
     /// a dictionary of meshes that can be quickly loaded, indexed by name
     /// </summary>
     private Dictionary<string, Mesh> _quickMeshes;
+
+    /// <summary>
+    /// lock used to safely update the quick mesh list while background loading is running
+    /// </summary>
+    private readonly object _quickMeshesLock = new();
 
     /// <summary>
     /// a dictionary of template functions for creating new meshes based on predefined configurations, indexed by name
@@ -158,7 +173,7 @@ public partial class Game1
     /// <summary>
     /// the index of the currently selected teacher tab in the teacher assignments window, used for displaying the correct assignments when the user has multiple teachers
     /// </summary>
-    private int _selectedTeacherTabIndex = 0;
+    // private int _selectedTeacherTabIndex = 0;
 
     /// <summary>
     /// stores the input field for creating a new assigmnment in the teacher assignments window
@@ -220,7 +235,9 @@ public partial class Game1
             { "Circle", new CircleCollider(Vector2.Zero, 5f) },
         };
         _cursorCollider = _cursorColliderStore["Rectangle"];
-        _quickMeshes = LoadAllMeshesFromDirectory(_structurePath);
+        _quickMeshes = new Dictionary<string, Mesh>();
+        _loadingQuickMeshFile = string.Empty;
+        _ = LoadAllMeshesFromDirectoryAsync(_structurePath);
         _template = new Dictionary<string, Func<Mesh>>
         {
             {

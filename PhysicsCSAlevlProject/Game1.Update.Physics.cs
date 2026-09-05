@@ -1,78 +1,69 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Numerics;
 using ImGuiNET;
 using Raylib_cs;
 using rlImGui_cs;
+using System.Threading.Tasks;
 
 namespace PhysicsCSAlevlProject;
 
 public partial class Game1
 {
+    private const int PhysicsProfileWindowSize = 30;
+
+    private readonly Dictionary<string, long> _physicsProfileTicks = new();
+    private readonly Dictionary<string, double> _physicsPhaseAverageMs = new();
+    private int _physicsProfileSampleCount;
+    private int _solverIterations = 4;
+
+    private void AccumulatePhysicsProfile(string phaseName, Action action)
+    {
+        long start = Stopwatch.GetTimestamp();
+        action();
+        long elapsedTicks = Stopwatch.GetTimestamp() - start;
+
+        if (!_physicsProfileTicks.ContainsKey(phaseName))
+        {
+            _physicsProfileTicks[phaseName] = 0;
+        }
+
+        _physicsProfileTicks[phaseName] += elapsedTicks;
+    }
+
+    private void EndPhysicsProfileSample()
+    {
+        _physicsProfileSampleCount++;
+
+        if (_physicsProfileSampleCount < PhysicsProfileWindowSize)
+        {
+            return;
+        }
+
+        double ticksPerMs = Stopwatch.Frequency / 1000.0;
+
+        foreach (var phaseName in _physicsProfileTicks.Keys)
+        {
+            _physicsPhaseAverageMs[phaseName] =
+                (_physicsProfileTicks[phaseName] / ticksPerMs) / PhysicsProfileWindowSize;
+        }
+
+        _physicsProfileTicks.Clear();
+        _physicsProfileSampleCount = 0;
+    }
+
     private void RunPhysicsUpdate(Vector2 currentMousePos)
     {
-        int stepsThisFrame = 0;
         const int maxStepsPerFrame = 10000;
-        int subSteps = Math.Max(1, _subSteps);
-        Vector2 mouseDelta = currentMousePos - _previousMousePos;
-            int plannedStepsThisFrame = _paused
-                ? _stepsToStep
-                : Math.Min((int)(_timeAccumulator / FixedTimeStep), maxStepsPerFrame);
-            int totalIterations = Math.Max(1, plannedStepsThisFrame * subSteps);
-            Vector2 deltaPerIteration = mouseDelta / totalIterations;
+        int stepsThisFrame = 0;
 
         while (
             (_timeAccumulator >= FixedTimeStep || _stepsToStep > 0)
             && stepsThisFrame < maxStepsPerFrame
         )
         {
-            float subDt = FixedTimeStep / subSteps;
-
-            for (int subStepIndex = 0; subStepIndex < subSteps; subStepIndex++)
-            {
-                foreach (var particle in _activeMesh.Particles.Values)
-                {
-                    particle.AccumulatedForce = Vector2.Zero;
-                }
-                if (!_useConstraintSolver)
-                {
-                    ApplyStickForcesDictionary(_activeMesh.Sticks, 1f);
-                }
-                float iterationLerpFactor = 1f / (stepsThisFrame + 1f);
-
-                Vector2 cursorCenter = GetCursorColliderCenter();
-                cursorCenter = Vector2.Lerp(cursorCenter, currentMousePos, iterationLerpFactor);
-                SetCursorColliderCenter(cursorCenter);
-
-                if (
-                    _leftPressed
-                    && _selectedToolName == "Drag"
-                    && _currentMode == MeshMode.Interact
-                )
-                {
-                    foreach (int particleId in _meshParticlesInDragArea)
-                    {
-                        if (
-                            _activeMesh.Particles.TryGetValue(particleId, out var particle)
-                            && !particle.IsPinned
-                        )
-                        {
-                            particle.PreviousPosition = particle.Position;
-                            particle.Position += deltaPerIteration;
-                        }
-                    }
-                }
-
-                if (
-                    _leftPressed
-                    && _selectedToolName == "PhysicsDrag"
-                    && _currentMode == MeshMode.Interact
-                )
-                {
-                    ApplyPhysicsDragForces(currentMousePos, subDt);
-                }
-
-                UpdateParticles(subDt);
-            }
+            RunPhysicsStep(currentMousePos);
 
             if (_stepsToStep > 0)
                 _stepsToStep--;
@@ -88,6 +79,80 @@ public partial class Game1
         }
 
         UpdateStickColorsDictionary(_activeMesh.Sticks);
+    }
+
+    private void RunPhysicsStep(Vector2 currentMousePos)
+    {
+        int subSteps = Math.Max(1, _subSteps);
+        float subDt = FixedTimeStep / subSteps;
+
+        for (int subStepIndex = 0; subStepIndex < subSteps; subStepIndex++)
+        {
+            AccumulatePhysicsProfile("prepare", () => PreparePhysicsSubstep(currentMousePos, subDt));
+            AccumulatePhysicsProfile("integrate", () => IntegrateParticles(subDt));
+            // AccumulatePhysicsProfile("collisionA", () => ResolveCollisionPhase());
+            AccumulatePhysicsProfile("constraints", () => SolveConstraintPhase(subDt));
+            AccumulatePhysicsProfile("collision", () => ResolveCollisionPhase());
+        }
+
+        EndPhysicsProfileSample();
+    }
+
+    private void PreparePhysicsSubstep(Vector2 currentMousePos, float subDt)
+    {
+        ResetParticleForces();
+
+        // if (!_useConstraintSolver)
+        // {
+        //     ApplyStickForcesDictionary(_activeMesh.Sticks, 1f);
+        // }
+
+        SetCursorColliderCenter(currentMousePos);
+        ApplyToolDrivenMotion(currentMousePos, subDt);
+        ApplyPhysicsDragForces(currentMousePos, subDt);
+    }
+
+    private void ResetParticleForces()
+    {
+
+        Parallel.ForEach(_activeMesh.Particles.Values, particle =>
+        {
+            particle.AccumulatedForce = Vector2.Zero;
+        });
+    }
+
+    private void ApplyToolDrivenMotion(Vector2 currentMousePos, float subDt)
+    {
+        Vector2 mouseDelta = currentMousePos - _previousMousePos;
+        int subSteps = Math.Max(1, _subSteps);
+        int totalIterations = Math.Max(1, subSteps);
+        Vector2 deltaPerIteration = mouseDelta / totalIterations;
+
+        if (_leftPressed && _selectedToolName == "Drag" && _currentMode == MeshMode.Interact)
+        {
+            foreach (int particleId in _meshParticlesInDragArea)
+            {
+                if (
+                    _activeMesh.Particles.TryGetValue(particleId, out var particle)
+                    && !particle.IsPinned
+                )
+                {
+                    particle.PreviousPosition = particle.Position;
+                    particle.Position += deltaPerIteration;
+                }
+            }
+        }
+    }
+
+    private void ResolveCollisionPhase()
+    {
+        ResolveCollisions();
+    }
+
+    private void SolveConstraintPhase(float subDt)
+    {
+        UpdateStickComplianceFromSpringConstant();
+        SolveStickConstraintsXPBD(_activeMesh.Sticks, _solverIterations, subDt);
     }
 
     private void ApplyPhysicsDragForces(Vector2 targetPosition, float deltaTime)
