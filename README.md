@@ -1,6 +1,6 @@
 # A-Level NEA: Verlet-Integration Cloth Physics
 
-A cloth physics simulation built in **C# with MonoGame** for my A-Level Computer Science NEA. The technical solution scored **42 out of 42 marks**.
+A cloth physics simulation built in **C# with MonoGame** for my A-Level Computer Science NEA on the AQA exam Board. The technical solution scored **42 out of 42 marks**.
 
 ## Why Verlet integration?
 
