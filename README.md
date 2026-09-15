@@ -32,3 +32,19 @@ git clone --recurse-submodules https://github.com/Ibi-bit/ClothPhysicsVerletInte
 ```
 
 Open the project in your IDE (with MonoGame support) and run the main project.
+
+## Project Writeup
+
+The full A-Level NEA report (["Verlet Physics Sandbox"](NEA-Writeup.pdf) — Analysis, Design, Testing and Evaluation) is included as [NEA-Writeup.pdf](NEA-Writeup.pdf); GitHub renders it in the browser.
+
+![Flow chart of the main and physics loops](docs/flow-chart.png)
+*Flow chart of the main and physics loops.*
+
+![Entity-relationship diagram](docs/erd.png)
+*Entity-relationship diagram for the database design.*
+
+![Excerpt from the testing log](docs/testing-log.png)
+*Excerpt from the testing log.*
+
+![Design rules and IPSO chart](docs/ipso-design.png)
+*Design rules and IPSO chart from the writeup.*
