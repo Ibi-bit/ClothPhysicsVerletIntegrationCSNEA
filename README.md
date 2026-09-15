@@ -28,7 +28,7 @@ Later iterations also store accumulated force on each particle (spring constants
 The repository uses git submodules, so clone with:
 
 ```sh
-git clone --recurse-submodules https://github.com/Ibi-bit/ClothPhysicsVerletIntergrationCSNEA.git
+git clone --recurse-submodules https://github.com/Ibi-bit/ClothPhysicsVerletIntegrationCSNEA.git
 ```
 
 Open the project in your IDE (with MonoGame support) and run the main project.
